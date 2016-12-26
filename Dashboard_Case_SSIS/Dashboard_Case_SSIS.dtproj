@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">OEM</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAXnQB+Hn990WS3SQEEyTaGAAAAAACAAAAAAAQZgAAAAEAACAAAAAjCiCCLDxe1eP8uoMbVFsUUJvSNlAizvvvGm+PyGEFmQAAAAAOgAAAAAIAACAAAADvL3J7hR22a7/qKaG5ZPiYG6iXjWmQHRiWmJi5OBZOKZAAAAARWksRGhpWPYefv6g3mVmIy5FUT1Q6dpxnKymncrG4UOByN1fgfVMLfjtvsFTLYVUR0XAfmn086Jo12PkNLGfVZOI1pU8MOENca2cVMChRmqJqjqR8aRgnX7HHBvMm4KamJQFo9eQT7Lx8+13jdu+nq5X0nfc0t0pNMCmrQpEq2jGC3mns3olxgQShCfxwKs9AAAAAxtp1+ElIebWlW6zKwr2T14nYreG26zObhslJREc8txOq2yzuaXa7yKDC/yor/3seD/nAl5GeHmalJl82rqqR+Q==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAXnQB+Hn990WS3SQEEyTaGAAAAAACAAAAAAAQZgAAAAEAACAAAABWvRjnMRIM1UBlw3O8CJ5dRPYyLhf/Bm2RCzhR/77u2gAAAAAOgAAAAAIAACAAAADhHIs5ekYTpwS3HsDLdYyYKx8u8KwbMn+D2a73nBQmJZAAAAAjpELpEeiCXk76kuONiwX/8XSDDSvLpXxGBUapq6XZt0X58SFoY2wurA7cRAIOkwSZz/mZZ17DVPRIiOROJIBLndwsN1lurDCPNu5rtoSjww/pyjDD2rMWU2kVvktrf3FlVtP6cHWswVQyKGczBsb1M9jeMEdPfWdn9CULGHW9Mi9TlDgGfuJA95kml5k5hNVAAAAAdXWoM7FoafZRkSgumPZJjr5r4ci//xZ2AJCIW5FzZQDINoC1twW0S3fcm+nU+7lY4I78kEP4dM5gtqvPS8Ihmw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -35,6 +35,7 @@
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="Dashboards_Prod.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="Dashboards_Staging_Area.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="Dashboards_Datawarehouse.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
@@ -137,7 +138,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=OEM;Initial Catalog=Staging_Area;Integrated Security=True;Application Name=SSIS-Dashboard_Case_SSIS-{B831C77C-11EF-4AC8-8FE6-66DF26FAA283}OEM.Staging_Area;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=OEM;Initial Catalog=Dashboards_Staging_Area;Integrated Security=True;Application Name=SSIS-Dashboard_Case_SSIS-{B831C77C-11EF-4AC8-8FE6-66DF26FAA283}OEM.Staging_Area;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -152,7 +153,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Staging_Area</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Dashboards_Staging_Area</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -214,6 +215,94 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Dashboards_Datawarehouse.ConnectionString">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=OEM;Initial Catalog=Dashboards_Datawarehouse;Integrated Security=True;Application Name=SSIS-Dashboard_Case_SSIS-{FEB7E2EA-9E11-4D18-A91A-CEF427588F93}OEM.Dashboards_Datawarehouse;</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Dashboards_Datawarehouse.InitialCatalog">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Dashboards_Datawarehouse</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Dashboards_Datawarehouse.Password">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Dashboards_Datawarehouse.RetainSameConnection">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Dashboards_Datawarehouse.ServerName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">OEM</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Dashboards_Datawarehouse.UserName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
             <SSIS:PackageMetaData SSIS:Name="Package.dtsx">
@@ -222,10 +311,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{DE52DB07-9AB2-4021-AEFF-74301A72DDE0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0574CC33-C94B-4D90-B73D-F5770A390B92}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

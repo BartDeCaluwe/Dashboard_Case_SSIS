@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Dashboards_Datawarehouse"
+  DTS:DTSID="{FEB7E2EA-9E11-4D18-A91A-CEF427588F93}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=OEM;Initial Catalog=Dashboards_Datawarehouse;Integrated Security=True;Application Name=SSIS-Dashboard_Case_SSIS-{FEB7E2EA-9E11-4D18-A91A-CEF427588F93}OEM.Dashboards_Datawarehouse;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
