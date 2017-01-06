@@ -7,28 +7,956 @@
   DTS:CreatorName="OEM\MEDIA"
   DTS:DTSID="{C40EE051-93A3-409F-8D3F-049D6E0F35B2}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{06A3ED51-D62D-4293-B5E5-8B11A414FEC5}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{D8E5D16E-1D33-47F8-B0EA-B03AE8864EBD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[OEM.Dashboards_Datawarehouse1]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{F24D73D6-2A56-478B-8313-E3B559306830}"
-      DTS:ObjectName="OEM.Dashboards_Datawarehouse1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=OEM;Initial Catalog=Dashboards_Datawarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4E1072D3-F615-4BF7-899E-90BD8C1D9AE8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileExtention">
+      <DTS:VariableValue
+        DTS:DataType="8">*.xml</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A795C490-8F45-4259-8449-3F90566AF519}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FilePath">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B6469532-F6C3-44AF-93B6-F476C581F4A4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FilePath1">
+      <DTS:VariableValue
+        DTS:DataType="8">13844721</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DED47E85-B557-40A6-9244-33FBDD2BF5FA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FolderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Bart\Documents\Mixbestanden\Te Verwerken\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{D7562A68-EB31-4DBB-8D65-1220F9C329C4}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{48984D85-CF7D-4BD0-851E-68156999C031}"
+        DTS:ObjectName="{48984D85-CF7D-4BD0-851E-68156999C031}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[User::FolderPath]</DTS:PropertyExpression>
+        <DTS:PropertyExpression
+          DTS:Name="FileSpec">@[User::FileExtention]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\Bart\Documents\Mixbestanden\Te Verwerken\" />
+            <FEFEProperty
+              FileSpec="*.xml" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{520C666F-3129-46CF-84B4-0781C5F779B0}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="[XML Source].[XMLData]">@[User::FilePath]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+                  name="ADO NET Destination"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The Destination database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."Wagen"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                      expressionType="Notify"
+                      name="BatchSize">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                      expressionType="Notify"
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                      expressionType="Notify"
+                      name="UseBulkInsertWhenPossible">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Connections[IDbConnection]"
+                      connectionManagerID="{C0BD038C-35F3-4749-BDC8-0C60B16763C0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Dashboards_Prod]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                      errorRowDisposition="IgnoreFailure"
+                      hasSideEffects="true"
+                      name="ADO NET Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Mixnummer]"
+                          cachedDataType="ui4"
+                          cachedName="Mixnummer"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Mixnummer]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Mixnummer]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Mixmoment]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Mixmoment"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Mixmoment]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Mixmoment]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[WagenType]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="WagenType"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WagenType]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[WagenType]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Uitvoering]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Uitvoering"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Uitvoering]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Uitvoering]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Motor]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Motor"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Motor]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Motor]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Kleur]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Kleur"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Kleur]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Kleur]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Bekleding]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Bekleding"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Bekleding]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Bekleding]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[KleurInterieur]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="KleurInterieur"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[KleurInterieur]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[KleurInterieur]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Maatsysteem]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Maatsysteem"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Maatsysteem]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Maatsysteem]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Taal]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Taal"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Taal]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Taal]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Mixnummer]"
+                          dataType="i8"
+                          name="Mixnummer" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Mixmoment]"
+                          dataType="dbTimeStamp"
+                          name="Mixmoment" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WagenType]"
+                          dataType="wstr"
+                          length="5"
+                          name="WagenType" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Uitvoering]"
+                          dataType="wstr"
+                          length="20"
+                          name="Uitvoering" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Motor]"
+                          dataType="wstr"
+                          length="10"
+                          name="Motor" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Kleur]"
+                          dataType="wstr"
+                          length="10"
+                          name="Kleur" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Bekleding]"
+                          dataType="wstr"
+                          length="10"
+                          name="Bekleding" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[KleurInterieur]"
+                          dataType="wstr"
+                          length="10"
+                          name="KleurInterieur" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Maatsysteem]"
+                          dataType="wstr"
+                          length="10"
+                          name="Maatsysteem" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Taal]"
+                          dataType="wstr"
+                          length="10"
+                          name="Taal" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ADO NET Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Data Flow Task\XML Source"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element.;Microsoft Corporation;Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element."
+                  name="XML Source"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.XmlSourceAdapter</property>
+                    <property
+                      dataType="System.String"
+                      description="The XML data used by the XML source adapter."
+                      expressionType="Notify"
+                      name="XMLData"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable used by the XML source adapter to specify XML data."
+                      name="XMLDataVariable">User::FilePath</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Defines how the XML source adapter gets XML data."
+                      name="AccessMode">1</property>
+                    <property
+                      dataType="System.String"
+                      description="The XML schema definition used by the XML source adapter."
+                      expressionType="Notify"
+                      name="XMLSchemaDefinition">C:\Users\Bart\Documents\Mixbestanden\Te Verwerken\MijnSchema.xsd</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Identifies whether or not to use inline schema."
+                      name="UseInlineSchema">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Defines how XML integer types are mapped."
+                      name="XMLIntegerMapping"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.XmlSourceAdapter+XMLIntegerMappingConverter">0</property>
+                  </properties>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel]"
+                      name="Onderdeel">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">Onderdeel</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel].Columns[Categorie]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel].ExternalColumns[Categorie]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel].Columns[Categorie]"
+                          name="Categorie"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel].Columns[Onderdelen_Id]"
+                          dataType="ui8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel].ExternalColumns[Onderdelen_Id]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel].Columns[Onderdelen_Id]"
+                          name="Onderdelen_Id"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel].ExternalColumns[Categorie]"
+                          dataType="wstr"
+                          length="255"
+                          name="Categorie">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel].ExternalColumns[Onderdelen_Id]"
+                          dataType="ui8"
+                          name="Onderdelen_Id">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt64</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output]"
+                      isErrorOut="true"
+                      name="Onderdeel Error Output">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">Onderdeel</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].Columns[Categorie]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].ExternalColumns[Categorie]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].Columns[Categorie]"
+                          name="Categorie" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].Columns[Onderdelen_Id]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].ExternalColumns[Onderdelen_Id]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].Columns[Onderdelen_Id]"
+                          name="Onderdelen_Id" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].ExternalColumns[Categorie]"
+                          dataType="nText"
+                          name="Categorie" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdeel Error Output].ExternalColumns[Onderdelen_Id]"
+                          dataType="nText"
+                          name="Onderdelen_Id" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen]"
+                      name="Onderdelen">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">Onderdelen</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen].Columns[Onderdelen_Id]"
+                          dataType="ui8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen].ExternalColumns[Onderdelen_Id]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen].Columns[Onderdelen_Id]"
+                          name="Onderdelen_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen].Columns[Wagen_Id]"
+                          dataType="ui8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen].ExternalColumns[Wagen_Id]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen].Columns[Wagen_Id]"
+                          name="Wagen_Id"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen].ExternalColumns[Onderdelen_Id]"
+                          dataType="ui8"
+                          name="Onderdelen_Id">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt64</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen].ExternalColumns[Wagen_Id]"
+                          dataType="ui8"
+                          name="Wagen_Id">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt64</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output]"
+                      isErrorOut="true"
+                      name="Onderdelen Error Output">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">Onderdelen</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].Columns[Onderdelen_Id]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].ExternalColumns[Onderdelen_Id]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].Columns[Onderdelen_Id]"
+                          name="Onderdelen_Id" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].Columns[Wagen_Id]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].ExternalColumns[Wagen_Id]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].Columns[Wagen_Id]"
+                          name="Wagen_Id" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].ExternalColumns[Onderdelen_Id]"
+                          dataType="nText"
+                          name="Onderdelen_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Onderdelen Error Output].ExternalColumns[Wagen_Id]"
+                          dataType="nText"
+                          name="Wagen_Id" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen]"
+                      name="Wagen">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">Wagen</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Wagen_Id]"
+                          dataType="ui8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Wagen_Id]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Wagen_Id]"
+                          name="Wagen_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Mixnummer]"
+                          dataType="ui4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Mixnummer]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Mixnummer]"
+                          name="Mixnummer"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Mixmoment]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Mixmoment]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Mixmoment]"
+                          name="Mixmoment"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[WagenType]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[WagenType]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[WagenType]"
+                          name="WagenType"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Uitvoering]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Uitvoering]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Uitvoering]"
+                          name="Uitvoering"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Motor]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Motor]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Motor]"
+                          name="Motor"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Kleur]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Kleur]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Kleur]"
+                          name="Kleur"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Bekleding]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Bekleding]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Bekleding]"
+                          name="Bekleding"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[KleurInterieur]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[KleurInterieur]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[KleurInterieur]"
+                          name="KleurInterieur"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Maatsysteem]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Maatsysteem]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Maatsysteem]"
+                          name="Maatsysteem"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Taal]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Taal]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].Columns[Taal]"
+                          name="Taal"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Wagen_Id]"
+                          dataType="ui8"
+                          name="Wagen_Id">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt64</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Mixnummer]"
+                          dataType="ui4"
+                          name="Mixnummer">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt32</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Mixmoment]"
+                          dataType="dbTimeStamp"
+                          name="Mixmoment">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.DateTime</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[WagenType]"
+                          dataType="wstr"
+                          length="255"
+                          name="WagenType">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Uitvoering]"
+                          dataType="wstr"
+                          length="255"
+                          name="Uitvoering">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Motor]"
+                          dataType="wstr"
+                          length="255"
+                          name="Motor">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Kleur]"
+                          dataType="wstr"
+                          length="255"
+                          name="Kleur">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Bekleding]"
+                          dataType="wstr"
+                          length="255"
+                          name="Bekleding">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[KleurInterieur]"
+                          dataType="wstr"
+                          length="255"
+                          name="KleurInterieur">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Maatsysteem]"
+                          dataType="wstr"
+                          length="255"
+                          name="Maatsysteem">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen].ExternalColumns[Taal]"
+                          dataType="wstr"
+                          length="255"
+                          name="Taal">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output]"
+                      isErrorOut="true"
+                      name="Wagen Error Output">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">Wagen</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Wagen_Id]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Wagen_Id]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Wagen_Id]"
+                          name="Wagen_Id" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Mixnummer]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Mixnummer]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Mixnummer]"
+                          name="Mixnummer" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Mixmoment]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Mixmoment]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Mixmoment]"
+                          name="Mixmoment" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[WagenType]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[WagenType]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[WagenType]"
+                          name="WagenType" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Uitvoering]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Uitvoering]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Uitvoering]"
+                          name="Uitvoering" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Motor]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Motor]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Motor]"
+                          name="Motor" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Kleur]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Kleur]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Kleur]"
+                          name="Kleur" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Bekleding]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Bekleding]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Bekleding]"
+                          name="Bekleding" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[KleurInterieur]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[KleurInterieur]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[KleurInterieur]"
+                          name="KleurInterieur" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Maatsysteem]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Maatsysteem]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Maatsysteem]"
+                          name="Maatsysteem" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Taal]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Taal]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[Taal]"
+                          name="Taal" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Wagen_Id]"
+                          dataType="nText"
+                          name="Wagen_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Mixnummer]"
+                          dataType="nText"
+                          name="Mixnummer" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Mixmoment]"
+                          dataType="nText"
+                          name="Mixmoment" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[WagenType]"
+                          dataType="nText"
+                          name="WagenType" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Uitvoering]"
+                          dataType="nText"
+                          name="Uitvoering" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Motor]"
+                          dataType="nText"
+                          name="Motor" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Kleur]"
+                          dataType="nText"
+                          name="Kleur" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Bekleding]"
+                          dataType="nText"
+                          name="Bekleding" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[KleurInterieur]"
+                          dataType="nText"
+                          name="KleurInterieur" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Maatsysteem]"
+                          dataType="nText"
+                          name="Maatsysteem" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen Error Output].ExternalColumns[Taal]"
+                          dataType="nText"
+                          name="Taal" />
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\Data Flow Task.Paths[Wagen]"
+                  endId="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  name="Wagen"
+                  startId="Package\Foreach Loop Container\Data Flow Task\XML Source.Outputs[Wagen]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{1F3EB6B1-34EC-4E97-A9B5-E92E7E414919}"
+          DTS:ObjectName="{1F3EB6B1-34EC-4E97-A9B5-E92E7E414919}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::FileExtention" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{FB2CD42A-91C8-4327-ABCF-98739155940F}"
+          DTS:ObjectName="{FB2CD42A-91C8-4327-ABCF-98739155940F}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::FolderPath" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{3D7067B4-4D78-43CB-A844-0D548A7093C0}"
+          DTS:ObjectName="{3D7067B4-4D78-43CB-A844-0D548A7093C0}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::FilePath1" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Production_To_Staging"
       DTS:CreationName="Microsoft.Pipeline"
@@ -8982,12 +9910,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               name="ADO NET Source Output"
               startId="Package\Staging_To_Data_Warehouse\Wagen_Staging_Area.Outputs[ADO NET Source Output]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[ADO NET Source Output2]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[ADO NET Source Output1]"
               endId="Package\Staging_To_Data_Warehouse\Multicast 2.Inputs[Multicast Input 1]"
               name="ADO NET Source Output"
               startId="Package\Staging_To_Data_Warehouse\StockLocatieRanges_Staging_Area.Outputs[ADO NET Source Output]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[ADO NET Source Output1]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[ADO NET Source Output2]"
               endId="Package\Staging_To_Data_Warehouse\Multicast 1.Inputs[Multicast Input 1]"
               name="ADO NET Source Output"
               startId="Package\Staging_To_Data_Warehouse\Onderdelen_Staging_Area.Outputs[ADO NET Source Output]" />
@@ -8997,27 +9925,27 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               name="Multicast Output 1"
               startId="Package\Staging_To_Data_Warehouse\Multicast.Outputs[Multicast Output 1]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 12]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 11]"
               endId="Package\Staging_To_Data_Warehouse\Stocklocatie_To_Categorie.Inputs[Input 0]"
               name="Multicast Output 1"
               startId="Package\Staging_To_Data_Warehouse\Multicast 2.Outputs[Multicast Output 1]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 11]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 12]"
               endId="Package\Staging_To_Data_Warehouse\Prijs_To_Categorie.Inputs[Input 0]"
               name="Multicast Output 1"
               startId="Package\Staging_To_Data_Warehouse\Multicast 1.Outputs[Multicast Output 1]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 21]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 2]"
               endId="Package\Staging_To_Data_Warehouse\Dim_Locatie.Inputs[ADO NET Destination Input]"
               name="Multicast Output 2"
               startId="Package\Staging_To_Data_Warehouse\Multicast 2.Outputs[Multicast Output 2]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 22]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 21]"
               endId="Package\Staging_To_Data_Warehouse\Dim_Onderdeel.Inputs[ADO NET Destination Input]"
               name="Multicast Output 2"
               startId="Package\Staging_To_Data_Warehouse\Multicast 1.Outputs[Multicast Output 2]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 2]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 22]"
               endId="Package\Staging_To_Data_Warehouse\Dim_Maatsysteem.Inputs[ADO NET Destination Input]"
               name="Multicast Output 2"
               startId="Package\Staging_To_Data_Warehouse\Multicast.Outputs[Multicast Output 2]" />
@@ -9062,22 +9990,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               name="Output 0"
               startId="Package\Staging_To_Data_Warehouse\Prijs_To_Categorie.Outputs[Output 0]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Output 02]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Output 01]"
               endId="Package\Staging_To_Data_Warehouse\Dim_MixDag.Inputs[ADO NET Destination Input]"
               name="Output 0"
               startId="Package\Staging_To_Data_Warehouse\MixMoment_To_Dag.Outputs[Output 0]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Output 03]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Output 02]"
               endId="Package\Staging_To_Data_Warehouse\Dim_MixTijdstip.Inputs[ADO NET Destination Input]"
               name="Output 0"
               startId="Package\Staging_To_Data_Warehouse\Script Component.Outputs[Output 0]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Output 04]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Output 03]"
               endId="Package\Staging_To_Data_Warehouse\Dim_AfstandsCategorie.Inputs[ADO NET Destination Input]"
               name="Output 0"
               startId="Package\Staging_To_Data_Warehouse\Stocklocatie_To_Categorie.Outputs[Output 0]" />
             <path
-              refId="Package\Staging_To_Data_Warehouse.Paths[Output 01]"
+              refId="Package\Staging_To_Data_Warehouse.Paths[Output 04]"
               endId="Package\Staging_To_Data_Warehouse\Dim_Kleur.Inputs[ADO NET Destination Input]"
               name="Output 0"
               startId="Package\Staging_To_Data_Warehouse\Kleur_To_Categorie.Outputs[Output 0]" />
@@ -9101,11 +10029,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="188,42"
           Id="Package\Production_To_Staging"
-          TopLeft="187,78" />
+          TopLeft="18,17" />
         <NodeLayout
           Size="219,42"
           Id="Package\Staging_To_Data_Warehouse"
-          TopLeft="413,85" />
+          TopLeft="216,17" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Foreach Loop Container\Data Flow Task"
+          TopLeft="49,19" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="250,122"
+          Size="250,165"
+          Id="Package\Foreach Loop Container"
+          TopLeft="91,106" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -9113,37 +10052,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\Production_To_Staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="193,42"
-          Id="Package\Production_To_Staging\AutoSamenstelling_Prod"
-          TopLeft="197,34" />
-        <NodeLayout
-          Size="234,42"
-          Id="Package\Production_To_Staging\AutoSamenstelling_Staging_Area"
-          TopLeft="178,210" />
-        <EdgeLayout
-          Id="Package\Production_To_Staging.Paths[ADO NET Source Output]"
-          TopLeft="294.25,76">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,134"
-              Start="0,0"
-              End="0,126.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,126.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\Production_To_Staging\Onderdelen_Prod"
@@ -9152,28 +10061,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="202,42"
           Id="Package\Production_To_Staging\Onderdelen_Staging_Area"
           TopLeft="442,210" />
-        <EdgeLayout
-          Id="Package\Production_To_Staging.Paths[ADO NET Source Output1]"
-          TopLeft="542.25,76">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,134"
-              Start="0,0"
-              End="0,126.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,126.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Production_To_Staging\Wagen_Prod"
+          TopLeft="496,310" />
         <NodeLayout
           Size="197,42"
           Id="Package\Production_To_Staging\StocklocatieRanges_Prod"
@@ -9182,36 +10073,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="238,42"
           Id="Package\Production_To_Staging\StocklocatieRanges_Staging_Area"
           TopLeft="169,488" />
-        <EdgeLayout
-          Id="Package\Production_To_Staging.Paths[ADO NET Source Output2]"
-          TopLeft="291.75,354">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,134"
-              Start="0,0"
-              End="0,126.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,126.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="139,42"
-          Id="Package\Production_To_Staging\Wagen_Prod"
-          TopLeft="496,310" />
+          Size="234,42"
+          Id="Package\Production_To_Staging\AutoSamenstelling_Staging_Area"
+          TopLeft="178,210" />
         <NodeLayout
           Size="180,42"
           Id="Package\Production_To_Staging\Wagen_Staging_Area"
           TopLeft="477,486" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Production_To_Staging\AutoSamenstelling_Prod"
+          TopLeft="197,34" />
         <EdgeLayout
           Id="Package\Production_To_Staging.Paths[ADO NET Source Output3]"
           TopLeft="566.25,352">
@@ -9231,28 +10104,86 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Production_To_Staging.Paths[ADO NET Source Output2]"
+          TopLeft="291.75,354">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,134"
+              Start="0,0"
+              End="0,126.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Production_To_Staging.Paths[ADO NET Source Output1]"
+          TopLeft="542.25,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,134"
+              Start="0,0"
+              End="0,126.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Production_To_Staging.Paths[ADO NET Source Output]"
+          TopLeft="294.25,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,134"
+              Start="0,0"
+              End="0,126.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Production_To_Staging\AutoSamenstelling_Prod">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Production_To_Staging\AutoSamenstelling_Staging_Area">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Production_To_Staging\Onderdelen_Prod">
     <Properties>
@@ -9263,6 +10194,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Production_To_Staging\Onderdelen_Staging_Area">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Production_To_Staging\Wagen_Prod">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9286,7 +10225,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Production_To_Staging\Wagen_Prod">
+    design-time-name="Package\Production_To_Staging\AutoSamenstelling_Staging_Area">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9301,19 +10240,111 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Production_To_Staging\AutoSamenstelling_Prod">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Staging_To_Data_Warehouse">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_MixTijdstip"
+          TopLeft="272,508" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Staging_To_Data_Warehouse\Kleur_To_Categorie"
+          TopLeft="454,210" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_Maatsysteem"
+          TopLeft="246,222" />
         <NodeLayout
           Size="180,42"
           Id="Package\Staging_To_Data_Warehouse\Wagen_Staging_Area"
           TopLeft="135,11" />
         <NodeLayout
+          Size="152,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_Onderdeel"
+          TopLeft="867.777777777778,343.333333333333" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_Taal"
+          TopLeft="426,84" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Staging_To_Data_Warehouse\Stocklocatie_To_Categorie"
+          TopLeft="1044.44444444444,283.333333333333" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Staging_To_Data_Warehouse\Prijs_To_Categorie"
+          TopLeft="710,201" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_Kleur"
+          TopLeft="460,443" />
+        <NodeLayout
+          Size="241,69"
+          Id="Package\Staging_To_Data_Warehouse\StockLocatieRanges_Staging_Area"
+          TopLeft="967.777777777778,12.2222222222222" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Staging_To_Data_Warehouse\Onderdelen_Staging_Area"
+          TopLeft="727,8" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_WagenType"
+          TopLeft="499,145" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_Motor"
+          TopLeft="361,332" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_PrijsCategorie"
+          TopLeft="714,287" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Staging_To_Data_Warehouse\MixMoment_To_Dag"
+          TopLeft="28,382" />
+        <NodeLayout
           Size="149,42"
           Id="Package\Staging_To_Data_Warehouse\Dim_Bekleding"
           TopLeft="8,171" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_Locatie"
+          TopLeft="1291.11111111111,357.777777777778" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Staging_To_Data_Warehouse\Multicast 1"
+          TopLeft="725,101" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_MixDag"
+          TopLeft="73,489" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_Uitvoering"
+          TopLeft="133,310" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Staging_To_Data_Warehouse\Multicast 2"
+          TopLeft="1025.55555555556,123.333333333333" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Staging_To_Data_Warehouse\Script Component"
+          TopLeft="263,425" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Staging_To_Data_Warehouse\Dim_AfstandsCategorie"
+          TopLeft="1064.44444444444,361.111111111111" />
         <NodeLayout
           Size="120,42"
           Id="Package\Staging_To_Data_Warehouse\Multicast"
@@ -9349,325 +10380,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 1]"
-          TopLeft="196.2,132">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-113.7,39"
-              Start="0,0"
-              End="-113.7,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,3.88297872340425" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,3.88297872340425"
-                    Point2="0,7.88297872340425"
-                    Point3="-4,7.88297872340425" />
-                  <mssgle:LineSegment
-                    End="-109.7,7.88297872340425" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-109.7,7.88297872340425"
-                    Point2="-113.7,7.88297872340425"
-                    Point3="-113.7,11.8829787234042" />
-                  <mssgle:LineSegment
-                    End="-113.7,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_Maatsysteem"
-          TopLeft="246,222" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 2]"
-          TopLeft="241,132">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="87.5,90"
-              Start="0,0"
-              End="87.5,82.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41"
-                    Point2="0,45"
-                    Point3="4,45" />
-                  <mssgle:LineSegment
-                    End="83.5,45" />
-                  <mssgle:CubicBezierSegment
-                    Point1="83.5,45"
-                    Point2="87.5,45"
-                    Point3="87.5,49" />
-                  <mssgle:LineSegment
-                    End="87.5,82.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="131,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_Motor"
-          TopLeft="361,332" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 3]"
-          TopLeft="269,132">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="157.5,200"
-              Start="0,0"
-              End="157.5,192.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65.5652173913044" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,65.5652173913044"
-                    Point2="0,69.5652173913044"
-                    Point3="4,69.5652173913044" />
-                  <mssgle:LineSegment
-                    End="153.5,69.5652173913044" />
-                  <mssgle:CubicBezierSegment
-                    Point1="153.5,69.5652173913044"
-                    Point2="157.5,69.5652173913044"
-                    Point3="157.5,73.5652173913044" />
-                  <mssgle:LineSegment
-                    End="157.5,192.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="123,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_Taal"
-          TopLeft="426,84" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 4]"
-          TopLeft="301,108">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="125,0"
-              Start="0,0"
-              End="117.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="117.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_Uitvoering"
-          TopLeft="133,310" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 5]"
-          TopLeft="227,132">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-18.5,178"
-              Start="0,0"
-              End="-18.5,170.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.2452830188679" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,73.2452830188679"
-                    Point2="0,77.2452830188679"
-                    Point3="-4,77.2452830188679" />
-                  <mssgle:LineSegment
-                    End="-14.5,77.2452830188679" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-14.5,77.2452830188679"
-                    Point2="-18.5,77.2452830188679"
-                    Point3="-18.5,81.2452830188679" />
-                  <mssgle:LineSegment
-                    End="-18.5,170.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="159,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_WagenType"
-          TopLeft="499,145" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 6]"
-          TopLeft="301,116.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="198,49.3333333333333"
-              Start="0,0"
-              End="190.5,49.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="79.559633027523,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="79.559633027523,0"
-                    Point2="83.559633027523,0"
-                    Point3="83.559633027523,4" />
-                  <mssgle:LineSegment
-                    End="83.559633027523,45.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="83.559633027523,45.3333333333333"
-                    Point2="83.559633027523,49.3333333333333"
-                    Point3="87.559633027523,49.3333333333333" />
-                  <mssgle:LineSegment
-                    End="190.5,49.3333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="202,42"
-          Id="Package\Staging_To_Data_Warehouse\Onderdelen_Staging_Area"
-          TopLeft="727,8" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Staging_To_Data_Warehouse\Multicast 1"
-          TopLeft="725,101" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[ADO NET Source Output1]"
-          TopLeft="828,50">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-38,51"
-              Start="0,0"
-              End="-38,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.5"
-                    Point2="0,25.5"
-                    Point3="-4,25.5" />
-                  <mssgle:LineSegment
-                    End="-34,25.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-34,25.5"
-                    Point2="-38,25.5"
-                    Point3="-38,29.5" />
-                  <mssgle:LineSegment
-                    End="-38,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_PrijsCategorie"
-          TopLeft="714,287" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Staging_To_Data_Warehouse\Prijs_To_Categorie"
-          TopLeft="710,201" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 11]"
-          TopLeft="791.75,143">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Output 0]"
-          TopLeft="795.75,243">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="128,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_Kleur"
-          TopLeft="460,443" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Staging_To_Data_Warehouse\Kleur_To_Categorie"
-          TopLeft="454,210" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Output 01]"
+          Id="Package\Staging_To_Data_Warehouse.Paths[Output 04]"
           TopLeft="540,252">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -9697,53 +10416,73 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 7]"
-          TopLeft="283,132">
+          Id="Package\Staging_To_Data_Warehouse.Paths[Output 03]"
+          TopLeft="1145.94444444444,325.333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="257,78"
+              EndConnector="13.0000000000005,35.7777777777778"
               Start="0,0"
-              End="257,70.5">
+              End="13.0000000000005,28.2777777777778">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56" />
+                    End="0,13.8888888888889" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,56"
-                    Point2="0,60"
-                    Point3="4,60" />
+                    Point1="0,13.8888888888889"
+                    Point2="0,17.8888888888889"
+                    Point3="4,17.8888888888889" />
                   <mssgle:LineSegment
-                    End="253,60" />
+                    End="9.00000000000045,17.8888888888889" />
                   <mssgle:CubicBezierSegment
-                    Point1="253,60"
-                    Point2="257,60"
-                    Point3="257,64" />
+                    Point1="9.00000000000045,17.8888888888889"
+                    Point2="13.0000000000005,17.8888888888889"
+                    Point3="13.0000000000005,21.8888888888889" />
                   <mssgle:LineSegment
-                    End="257,70.5" />
+                    End="13.0000000000005,28.2777777777778" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_MixDag"
-          TopLeft="73,489" />
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Staging_To_Data_Warehouse\MixMoment_To_Dag"
-          TopLeft="28,382" />
         <EdgeLayout
           Id="Package\Staging_To_Data_Warehouse.Paths[Output 02]"
+          TopLeft="346.75,467">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[Output 01]"
           TopLeft="115.5,424">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -9773,7 +10512,69 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[Output 0]"
+          TopLeft="795.75,243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 9]"
+          TopLeft="232,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112.5,293"
+              Start="0,0"
+              End="112.5,285.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,142.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,142.5"
+                    Point2="0,146.5"
+                    Point3="4,146.5" />
+                  <mssgle:LineSegment
+                    End="108.5,146.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="108.5,146.5"
+                    Point2="112.5,146.5"
+                    Point3="112.5,150.5" />
+                  <mssgle:LineSegment
+                    End="112.5,285.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9807,223 +10608,217 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_MixTijdstip"
-          TopLeft="272,508" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Staging_To_Data_Warehouse\Script Component"
-          TopLeft="263,425" />
         <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 9]"
-          TopLeft="232,132">
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 7]"
+          TopLeft="283,132">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="112.5,293"
+              EndConnector="257,78"
               Start="0,0"
-              End="112.5,285.5">
+              End="257,70.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,142.5" />
+                    End="0,56" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,142.5"
-                    Point2="0,146.5"
-                    Point3="4,146.5" />
+                    Point1="0,56"
+                    Point2="0,60"
+                    Point3="4,60" />
                   <mssgle:LineSegment
-                    End="108.5,146.5" />
+                    End="253,60" />
                   <mssgle:CubicBezierSegment
-                    Point1="108.5,146.5"
-                    Point2="112.5,146.5"
-                    Point3="112.5,150.5" />
+                    Point1="253,60"
+                    Point2="257,60"
+                    Point3="257,64" />
                   <mssgle:LineSegment
-                    End="112.5,285.5" />
+                    End="257,70.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Output 03]"
-          TopLeft="346.75,467">
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 6]"
+          TopLeft="301,116.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41"
+              EndConnector="198,49.3333333333333"
               Start="0,0"
-              End="0,33.5">
+              End="190.5,49.3333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.5" />
+                    End="79.559633027523,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="79.559633027523,0"
+                    Point2="83.559633027523,0"
+                    Point3="83.559633027523,4" />
+                  <mssgle:LineSegment
+                    End="83.559633027523,45.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.559633027523,45.3333333333333"
+                    Point2="83.559633027523,49.3333333333333"
+                    Point3="87.559633027523,49.3333333333333" />
+                  <mssgle:LineSegment
+                    End="190.5,49.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="241,69"
-          Id="Package\Staging_To_Data_Warehouse\StockLocatieRanges_Staging_Area"
-          TopLeft="967.777777777778,12.2222222222222" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Staging_To_Data_Warehouse\Multicast 2"
-          TopLeft="1025.55555555556,123.333333333333" />
         <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[ADO NET Source Output2]"
-          TopLeft="1089.41666666667,81.2222222222222">
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 5]"
+          TopLeft="227,132">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42.1111111111111"
+              EndConnector="-18.5,178"
               Start="0,0"
-              End="0,34.6111111111111">
+              End="-18.5,170.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.6111111111111" />
+                    End="0,73.2452830188679" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,73.2452830188679"
+                    Point2="0,77.2452830188679"
+                    Point3="-4,77.2452830188679" />
+                  <mssgle:LineSegment
+                    End="-14.5,77.2452830188679" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.5,77.2452830188679"
+                    Point2="-18.5,77.2452830188679"
+                    Point3="-18.5,81.2452830188679" />
+                  <mssgle:LineSegment
+                    End="-18.5,170.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="189,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_AfstandsCategorie"
-          TopLeft="1064.44444444444,361.111111111111" />
-        <NodeLayout
-          Size="203,42"
-          Id="Package\Staging_To_Data_Warehouse\Stocklocatie_To_Categorie"
-          TopLeft="1044.44444444444,283.333333333333" />
         <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Output 04]"
-          TopLeft="1145.94444444444,325.333333333333">
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 4]"
+          TopLeft="301,108">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="13.0000000000005,35.7777777777778"
+              EndConnector="125,0"
               Start="0,0"
-              End="13.0000000000005,28.2777777777778">
+              End="117.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.8888888888889" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.8888888888889"
-                    Point2="0,17.8888888888889"
-                    Point3="4,17.8888888888889" />
-                  <mssgle:LineSegment
-                    End="9.00000000000045,17.8888888888889" />
-                  <mssgle:CubicBezierSegment
-                    Point1="9.00000000000045,17.8888888888889"
-                    Point2="13.0000000000005,17.8888888888889"
-                    Point3="13.0000000000005,21.8888888888889" />
-                  <mssgle:LineSegment
-                    End="13.0000000000005,28.2777777777778" />
+                    End="117.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 12]"
-          TopLeft="1070.22222222222,165.333333333333">
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 3]"
+          TopLeft="269,132">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="75.7222222222222,118"
+              EndConnector="157.5,200"
               Start="0,0"
-              End="75.7222222222222,110.5">
+              End="157.5,192.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.0607902735563" />
+                    End="0,65.5652173913044" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,44.0607902735563"
-                    Point2="0,48.0607902735563"
-                    Point3="4,48.0607902735563" />
+                    Point1="0,65.5652173913044"
+                    Point2="0,69.5652173913044"
+                    Point3="4,69.5652173913044" />
                   <mssgle:LineSegment
-                    End="71.7222222222222,48.0607902735563" />
+                    End="153.5,69.5652173913044" />
                   <mssgle:CubicBezierSegment
-                    Point1="71.7222222222222,48.0607902735563"
-                    Point2="75.7222222222222,48.0607902735563"
-                    Point3="75.7222222222222,52.0607902735563" />
+                    Point1="153.5,69.5652173913044"
+                    Point2="157.5,69.5652173913044"
+                    Point3="157.5,73.5652173913044" />
                   <mssgle:LineSegment
-                    End="75.7222222222222,110.5" />
+                    End="157.5,192.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="137,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_Locatie"
-          TopLeft="1291.11111111111,357.777777777778" />
-        <EdgeLayout
-          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 21]"
-          TopLeft="1110.88888888889,165.333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="248.722222222223,192.444444444444"
-              Start="0,0"
-              End="248.722222222223,184.944444444444">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,74.3816278284364" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,74.3816278284364"
-                    Point2="0,78.3816278284364"
-                    Point3="4,78.3816278284364" />
-                  <mssgle:LineSegment
-                    End="244.722222222223,78.3816278284364" />
-                  <mssgle:CubicBezierSegment
-                    Point1="244.722222222223,78.3816278284364"
-                    Point2="248.722222222223,78.3816278284364"
-                    Point3="248.722222222223,82.3816278284364" />
-                  <mssgle:LineSegment
-                    End="248.722222222223,184.944444444444" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Staging_To_Data_Warehouse\Dim_Onderdeel"
-          TopLeft="867.777777777778,343.333333333333" />
         <EdgeLayout
           Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 22]"
+          TopLeft="241,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.5,90"
+              Start="0,0"
+              End="87.5,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="4,45" />
+                  <mssgle:LineSegment
+                    End="83.5,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.5,45"
+                    Point2="87.5,45"
+                    Point3="87.5,49" />
+                  <mssgle:LineSegment
+                    End="87.5,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 21]"
           TopLeft="810.333333333333,143">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10053,22 +10848,208 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 2]"
+          TopLeft="1110.88888888889,165.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="248.722222222223,192.444444444444"
+              Start="0,0"
+              End="248.722222222223,184.944444444444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.3816278284364" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74.3816278284364"
+                    Point2="0,78.3816278284364"
+                    Point3="4,78.3816278284364" />
+                  <mssgle:LineSegment
+                    End="244.722222222223,78.3816278284364" />
+                  <mssgle:CubicBezierSegment
+                    Point1="244.722222222223,78.3816278284364"
+                    Point2="248.722222222223,78.3816278284364"
+                    Point3="248.722222222223,82.3816278284364" />
+                  <mssgle:LineSegment
+                    End="248.722222222223,184.944444444444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 12]"
+          TopLeft="791.75,143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 11]"
+          TopLeft="1070.22222222222,165.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.7222222222222,118"
+              Start="0,0"
+              End="75.7222222222222,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.0607902735563" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.0607902735563"
+                    Point2="0,48.0607902735563"
+                    Point3="4,48.0607902735563" />
+                  <mssgle:LineSegment
+                    End="71.7222222222222,48.0607902735563" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.7222222222222,48.0607902735563"
+                    Point2="75.7222222222222,48.0607902735563"
+                    Point3="75.7222222222222,52.0607902735563" />
+                  <mssgle:LineSegment
+                    End="75.7222222222222,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[Multicast Output 1]"
+          TopLeft="196.2,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-113.7,39"
+              Start="0,0"
+              End="-113.7,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,3.88297872340425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,3.88297872340425"
+                    Point2="0,7.88297872340425"
+                    Point3="-4,7.88297872340425" />
+                  <mssgle:LineSegment
+                    End="-109.7,7.88297872340425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-109.7,7.88297872340425"
+                    Point2="-113.7,7.88297872340425"
+                    Point3="-113.7,11.8829787234042" />
+                  <mssgle:LineSegment
+                    End="-113.7,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[ADO NET Source Output2]"
+          TopLeft="828,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38,51"
+              Start="0,0"
+              End="-38,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="-4,25.5" />
+                  <mssgle:LineSegment
+                    End="-34,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34,25.5"
+                    Point2="-38,25.5"
+                    Point3="-38,29.5" />
+                  <mssgle:LineSegment
+                    End="-38,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_To_Data_Warehouse.Paths[ADO NET Source Output1]"
+          TopLeft="1089.41666666667,81.2222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.1111111111111"
+              Start="0,0"
+              End="0,34.6111111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6111111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Wagen_Staging_Area">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_Bekleding">
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_MixTijdstip">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10084,7 +11065,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_Motor">
+    design-time-name="Package\Staging_To_Data_Warehouse\Wagen_Staging_Area">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_Onderdeel">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10100,55 +11089,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_Uitvoering">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_WagenType">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Onderdelen_Staging_Area">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_PrijsCategorie">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Staging_To_Data_Warehouse\Dim_Kleur">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_MixDag">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_MixTijdstip">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10164,7 +11105,39 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_AfstandsCategorie">
+    design-time-name="Package\Staging_To_Data_Warehouse\Onderdelen_Staging_Area">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_WagenType">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_Motor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_PrijsCategorie">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_Bekleding">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10180,7 +11153,71 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Staging_To_Data_Warehouse\Dim_Onderdeel">
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_MixDag">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_Uitvoering">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging_To_Data_Warehouse\Dim_AfstandsCategorie">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Foreach Loop Container\Data Flow Task\XML Source"
+          TopLeft="137,14" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination"
+          TopLeft="116,164" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Wagen]"
+          TopLeft="204.75,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,108"
+              Start="0,0"
+              End="0,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.942109375,44.58203125,31.88421875,11.3359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Data Flow Task\ADO NET Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
