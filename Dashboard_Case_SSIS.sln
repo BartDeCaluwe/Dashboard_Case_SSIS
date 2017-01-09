@@ -5,13 +5,48 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Dashboard_Case_SSIS", "Dashboard_Case_SSIS\Dashboard_Case_SSIS.dtproj", "{F92C074C-25E3-45EE-AEF3-01380CC86289}"
 EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "BI_AnalysisServices", "BI_AnalysisServices\BI_AnalysisServices.dwproj", "{8C9FF7D3-F24E-4F01-9191-C3523F385280}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PicklistReportGenerator", "PicklistReportGenerator\PicklistReportGenerator.rptproj", "{91C0F886-70F1-4255-94B5-D51E5F2A9088}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
 		Development|Default = Development|Default
+		Release|Default = Release|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F92C074C-25E3-45EE-AEF3-01380CC86289}.Debug|Default.ActiveCfg = Development
+		{F92C074C-25E3-45EE-AEF3-01380CC86289}.Debug|Default.Build.0 = Development
+		{F92C074C-25E3-45EE-AEF3-01380CC86289}.DebugLocal|Default.ActiveCfg = Development
+		{F92C074C-25E3-45EE-AEF3-01380CC86289}.DebugLocal|Default.Build.0 = Development
 		{F92C074C-25E3-45EE-AEF3-01380CC86289}.Development|Default.ActiveCfg = Development
 		{F92C074C-25E3-45EE-AEF3-01380CC86289}.Development|Default.Build.0 = Development
+		{F92C074C-25E3-45EE-AEF3-01380CC86289}.Release|Default.ActiveCfg = Development
+		{F92C074C-25E3-45EE-AEF3-01380CC86289}.Release|Default.Build.0 = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Debug|Default.ActiveCfg = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Debug|Default.Build.0 = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Debug|Default.Deploy.0 = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.DebugLocal|Default.ActiveCfg = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.DebugLocal|Default.Build.0 = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.DebugLocal|Default.Deploy.0 = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Development|Default.ActiveCfg = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Development|Default.Build.0 = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Development|Default.Deploy.0 = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Release|Default.ActiveCfg = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Release|Default.Build.0 = Development
+		{8C9FF7D3-F24E-4F01-9191-C3523F385280}.Release|Default.Deploy.0 = Development
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.Debug|Default.ActiveCfg = Debug
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.Debug|Default.Build.0 = Debug
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.Debug|Default.Deploy.0 = Debug
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.DebugLocal|Default.Build.0 = DebugLocal
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.Development|Default.ActiveCfg = DebugLocal
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.Development|Default.Build.0 = DebugLocal
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.Release|Default.ActiveCfg = Release
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.Release|Default.Build.0 = Release
+		{91C0F886-70F1-4255-94B5-D51E5F2A9088}.Release|Default.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

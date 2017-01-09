@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-8QL079I.Dashboards1"
+  DTS:DTSID="{D63BD21E-270F-43B8-B69E-6709966E2275}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=DESKTOP-8QL079I;Initial Catalog=Dashboards;Integrated Security=True;Application Name=SSIS-Dashboard_Case_SSIS-{D63BD21E-270F-43B8-B69E-6709966E2275}DESKTOP-8QL079I.Dashboards1;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

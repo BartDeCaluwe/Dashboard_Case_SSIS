@@ -1,0 +1,432 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="8470d3a8-370e-434d-81ea-df1a05944fee" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dashboards Datawarehouse</ID>
+  <Name>Dashboards Datawarehouse</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>Dashboards Datawarehouse</DataSourceID>
+  <Schema>
+    <xs:schema id="Dashboards_x0020_Datawarehouse" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="Dashboards_x0020_Datawarehouse" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="da572cda-d01e-4224-9fe6-159c83dea712">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_Fact_Samenstelling" msprop:design-time-name="b6a0e4c9-20d7-4d3e-8c6f-8a0e99dd19e1" msprop:DbTableName="Fact_Samenstelling" msprop:FriendlyName="Fact_Samenstelling" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Totaalprijs" msprop:design-time-name="713d0660-43c9-4ccc-a0a0-0ad3f9eba8d1" msprop:DbColumnName="Totaalprijs" msprop:FriendlyName="Totaalprijs" type="xs:decimal" />
+                  <xs:element name="AfstandTotLijn" msprop:design-time-name="50c07ded-c094-43c7-9b18-1ff447fbadb1" msprop:DbColumnName="AfstandTotLijn" msprop:FriendlyName="AfstandTotLijn" type="xs:double" />
+                  <xs:element name="MaatSysteem_ID" msprop:design-time-name="ad186ce9-f158-41ce-b2d5-93ab896eba86" msprop:DbColumnName="MaatSysteem_ID" msprop:FriendlyName="MaatSysteem_ID" type="xs:int" />
+                  <xs:element name="Onderdeel_ID" msprop:design-time-name="24184aa1-03ef-4409-852c-ada4d1712dbb" msprop:DbColumnName="Onderdeel_ID" msprop:FriendlyName="Onderdeel_ID" type="xs:int" />
+                  <xs:element name="WagenType_ID" msprop:design-time-name="37b7b03d-e696-4ad3-90fb-82142fb2112a" msprop:DbColumnName="WagenType_ID" msprop:FriendlyName="WagenType_ID" type="xs:int" />
+                  <xs:element name="MixDag_ID" msprop:design-time-name="879c8fcc-9d08-418d-944c-8ffea40705dc" msprop:DbColumnName="MixDag_ID" msprop:FriendlyName="MixDag_ID" type="xs:long" />
+                  <xs:element name="MixTijdStip_ID" msprop:design-time-name="fd0dc334-a556-4fb8-bd65-225c653e18c0" msprop:DbColumnName="MixTijdStip_ID" msprop:FriendlyName="MixTijdStip_ID" type="xs:long" />
+                  <xs:element name="PrijsCategorie_ID" msprop:design-time-name="3451bfa0-b1e1-47d5-86cf-65f79f6d739d" msprop:DbColumnName="PrijsCategorie_ID" msprop:FriendlyName="PrijsCategorie_ID" type="xs:int" />
+                  <xs:element name="AfstandsCategorie_ID" msprop:design-time-name="219765b9-ef9b-4e8d-81f3-0907a4af0ac3" msprop:DbColumnName="AfstandsCategorie_ID" msprop:FriendlyName="AfstandsCategorie_ID" type="xs:int" />
+                  <xs:element name="Bekleding_ID" msprop:design-time-name="5f097c4b-f685-4be7-b35b-ec7074061440" msprop:DbColumnName="Bekleding_ID" msprop:FriendlyName="Bekleding_ID" type="xs:int" />
+                  <xs:element name="Locatie_ID" msprop:design-time-name="13b7113a-1b65-4c2b-9bec-55ae4a8767d2" msprop:DbColumnName="Locatie_ID" msprop:FriendlyName="Locatie_ID" type="xs:int" />
+                  <xs:element name="Kleur_ID" msprop:design-time-name="998348c2-7d6d-4412-af05-f7a2d73ebbed" msprop:DbColumnName="Kleur_ID" msprop:FriendlyName="Kleur_ID" type="xs:int" />
+                  <xs:element name="Taal_ID" msprop:design-time-name="67a9b0d5-1034-4c24-8cf7-0137ad2ecd70" msprop:DbColumnName="Taal_ID" msprop:FriendlyName="Taal_ID" type="xs:int" />
+                  <xs:element name="Uitvoering_ID" msprop:design-time-name="578c4910-3615-4202-a392-90eba64294cc" msprop:DbColumnName="Uitvoering_ID" msprop:FriendlyName="Uitvoering_ID" type="xs:int" />
+                  <xs:element name="Aantal" msprop:design-time-name="a0895d44-4a44-4fb8-805c-88922ee32845" msprop:DbColumnName="Aantal" msprop:FriendlyName="Aantal" type="xs:int" />
+                  <xs:element name="Motor_ID" msprop:design-time-name="658f9f5b-0816-440f-bb67-1064f955456b" msprop:DbColumnName="Motor_ID" msprop:FriendlyName="Motor_ID" type="xs:int" />
+                  <xs:element name="OnderdeelsCategorie_ID" msprop:design-time-name="c1b01f6f-1ac5-4726-8a51-b5796f2af517" msprop:DbColumnName="OnderdeelsCategorie_ID" msprop:FriendlyName="OnderdeelsCategorie_ID" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Uitvoering" msprop:design-time-name="19095265-0700-49bc-bb2e-7495101ca342" msprop:DbTableName="Dim_Uitvoering" msprop:FriendlyName="Dim_Uitvoering" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="5e6538af-8425-4f9c-88d0-375330db81e8" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="d87315af-8e9a-45ae-a2aa-29e2023fc478" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_PrijsCategorie" msprop:design-time-name="2e8df91b-7047-4619-9d12-fcd4200820ea" msprop:DbTableName="Dim_PrijsCategorie" msprop:FriendlyName="Dim_PrijsCategorie" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="5b122006-6dfa-45a0-a99f-eb1454ce73e1" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="2a75940f-30d9-4100-95b1-75421de5450e" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_OnderdeelsCategorie" msprop:design-time-name="02fe8329-e5db-4032-9407-356b7e5379c6" msprop:DbTableName="Dim_OnderdeelsCategorie" msprop:FriendlyName="Dim_OnderdeelsCategorie" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="e8a6eaa0-e438-41fd-bb8c-3e9478543761" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="730582bd-275e-45c1-aaf2-827f12afcf46" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_AfstandsCategorie" msprop:design-time-name="0a09cc48-e9da-466d-aa9b-f8d040a540a5" msprop:DbTableName="Dim_AfstandsCategorie" msprop:FriendlyName="Dim_AfstandsCategorie" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="b432e925-8189-4d8b-a823-9c83a395e9d4" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="f566e959-2ece-417a-b65d-d14e44616fbc" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Kleur" msprop:design-time-name="3926ce70-688d-4616-94af-36d67e1f7389" msprop:DbTableName="Dim_Kleur" msprop:FriendlyName="Dim_Kleur" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="64cde9a1-362e-4247-adfa-5f217af1d03e" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="a0cca63f-1b44-4fae-995b-169d3cac8b18" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Categorie" msprop:design-time-name="21ec750c-839f-4bcb-9b4d-30d627ccd3ff" msprop:DbColumnName="Categorie" msprop:FriendlyName="Categorie">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Locatie" msprop:design-time-name="cd3c0fbe-6d95-401f-b05a-6af361c84d1a" msprop:DbTableName="Dim_Locatie" msprop:FriendlyName="Dim_Locatie" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="fc69fb13-dd97-4f3e-98b1-814dc89de723" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="8937119c-09bd-48e3-b9b4-dca2a5d0cda3" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rij" msprop:design-time-name="d999c0b5-8775-423a-b94e-06ac9eacff73" msprop:DbColumnName="Rij" msprop:FriendlyName="Rij">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="2" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Startplaats" msprop:design-time-name="fca46dcd-b721-4734-a483-c0d37d4fabf0" msprop:DbColumnName="Startplaats" msprop:FriendlyName="Startplaats" type="xs:int" />
+                  <xs:element name="Eindplaats" msprop:design-time-name="e9d8e497-c8e3-4c0a-b40f-53fc1c117d37" msprop:DbColumnName="Eindplaats" msprop:FriendlyName="Eindplaats" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Onderdeel" msprop:design-time-name="62b754ca-d7f4-472b-ad27-7659f89978ff" msprop:DbTableName="Dim_Onderdeel" msprop:FriendlyName="Dim_Onderdeel" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="0ab8de2f-36fe-44ee-afbb-f1728fdbd144" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Stuknummer" msprop:design-time-name="fd4e8d87-01c7-43d8-a89c-9a02b2faeff4" msprop:DbColumnName="Stuknummer" msprop:FriendlyName="Stuknummer">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Naam" msprop:design-time-name="c3868ab3-2c70-4c2f-bf2b-932d976e6754" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Omschrijving" msprop:design-time-name="6509d6ed-2820-4617-867b-caf8c9c3348f" msprop:DbColumnName="Omschrijving" msprop:FriendlyName="Omschrijving">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="200" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Stukprijs" msprop:design-time-name="ee94ef6a-7385-4dbe-9737-24110e373156" msprop:DbColumnName="Stukprijs" msprop:FriendlyName="Stukprijs" type="xs:decimal" />
+                  <xs:element name="Kleur" msprop:design-time-name="413be33b-9030-4c84-80ce-fcb2522a7533" msprop:DbColumnName="Kleur" msprop:FriendlyName="Kleur">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Bekleding" msprop:design-time-name="222b7867-230a-49c2-9d8e-8e8fde4c5e87" msprop:DbTableName="Dim_Bekleding" msprop:FriendlyName="Dim_Bekleding" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="8bedf280-cccc-40f3-8ee3-16a85b28131b" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="9b013891-1ee4-41ca-93a5-b29a346326f0" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Kleur" msprop:design-time-name="c999beba-33b1-48d4-8567-4b4f8225d290" msprop:DbColumnName="Kleur" msprop:FriendlyName="Kleur">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_WagenType" msprop:design-time-name="83a573b6-477e-4cde-a314-667663da447d" msprop:DbTableName="Dim_WagenType" msprop:FriendlyName="Dim_WagenType" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="7df431ea-167d-4eee-a07d-e94593fafba3" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="db739027-c915-4415-8c05-1e3c69cffd55" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_MixTijdstip" msprop:design-time-name="63c1fad9-11c5-4a97-b30e-ca9ed4c4a6ff" msprop:DbTableName="Dim_MixTijdstip" msprop:FriendlyName="Dim_MixTijdstip" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="df5e4367-4b1a-40a3-a051-0575fb266287" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:long" />
+                  <xs:element name="Uur" msprop:design-time-name="89deb031-465e-435d-8d34-4c714af3d0fa" msprop:DbColumnName="Uur" msprop:FriendlyName="Uur" type="xs:int" />
+                  <xs:element name="Minuut" msprop:design-time-name="d68e948c-3569-419f-99ad-f24be5c9f17c" msprop:DbColumnName="Minuut" msprop:FriendlyName="Minuut" type="xs:int" />
+                  <xs:element name="Periode" msprop:design-time-name="bf658750-5307-4607-86ce-d9ddb6bebc7c" msprop:DbColumnName="Periode" msprop:FriendlyName="Periode">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Motor" msprop:design-time-name="6a9bb6b1-d998-45bf-93cb-2e3cacea093a" msprop:DbTableName="Dim_Motor" msprop:FriendlyName="Dim_Motor" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="adf4cab9-463a-408c-b287-645c5e3e7338" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="93412364-e3a4-40a8-bb5f-f1a5c67e9548" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_MixDag" msprop:design-time-name="aee070e6-36dd-444f-a44c-8e49b854b7f6" msprop:DbTableName="Dim_MixDag" msprop:FriendlyName="Dim_MixDag" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="a98ef28d-b29d-4775-8f6e-522584f76ba0" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:long" />
+                  <xs:element name="Kwartaal" msprop:design-time-name="8c28ffc3-6f67-4f4e-afd2-a537dbc0ec40" msprop:DbColumnName="Kwartaal" msprop:FriendlyName="Kwartaal" type="xs:int" />
+                  <xs:element name="Jaar" msprop:design-time-name="04c5aca2-af98-4d24-9873-e9466cd31658" msprop:DbColumnName="Jaar" msprop:FriendlyName="Jaar" type="xs:int" />
+                  <xs:element name="FiscaalJaar" msprop:design-time-name="0583fc33-3369-410f-89be-7bf09dbb7593" msprop:DbColumnName="FiscaalJaar" msprop:FriendlyName="FiscaalJaar" type="xs:int" />
+                  <xs:element name="Maand" msprop:design-time-name="e29700d7-69b0-4d46-9c8c-0bc3f1e044a5" msprop:DbColumnName="Maand" msprop:FriendlyName="Maand" type="xs:int" />
+                  <xs:element name="Dag" msprop:design-time-name="d1a0dfda-3751-4b34-a9b7-393d38d2ad74" msprop:DbColumnName="Dag" msprop:FriendlyName="Dag" type="xs:int" />
+                  <xs:element name="Weekdag" msprop:design-time-name="78c54d87-7eac-4739-a271-f8a686f7f41c" msprop:DbColumnName="Weekdag" msprop:FriendlyName="Weekdag" type="xs:unsignedByte" />
+                  <xs:element name="Feestdag" msprop:design-time-name="3eb7a03b-f272-4204-aa88-5be37d371547" msprop:DbColumnName="Feestdag" msprop:FriendlyName="Feestdag" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Maatsysteem" msprop:design-time-name="170ffe41-b1c3-40e8-8ff1-21537b28bf59" msprop:DbTableName="Dim_Maatsysteem" msprop:FriendlyName="Dim_Maatsysteem" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="c7f83490-45c4-4900-a378-f90ef008bac3" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="9604f5a4-4105-4664-a510-1df56307b502" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Taal" msprop:design-time-name="8dafb3d2-5a2a-45fc-8f0c-3d3f91991780" msprop:DbTableName="Dim_Taal" msprop:FriendlyName="Dim_Taal" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="b64aac45-5ba1-4f70-94bc-781f42c92792" msprop:DbColumnName="ID" msprop:FriendlyName="ID" type="xs:int" />
+                  <xs:element name="Naam" msprop:design-time-name="e8b6a525-2650-40f0-8be2-3f3545b2b56f" msprop:DbColumnName="Naam" msprop:FriendlyName="Naam">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Uitvoering" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_PrijsCategorie_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_PrijsCategorie" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_OnderdeelsCategorie_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_OnderdeelsCategorie" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_AfstandsCategorie_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_AfstandsCategorie" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Kleur_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Kleur" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Locatie_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Locatie" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Onderdeel_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Onderdeel" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Bekleding_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Bekleding" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_WagenType_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_WagenType" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_MixTijdstip_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_MixTijdstip" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Motor_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Motor" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_MixDag_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_MixDag" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Maatsysteem_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Maatsysteem" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Taal_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Taal" />
+          <xs:field xpath="ID" />
+        </xs:unique>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_PrijsCategorie" refer="dbo_Dim_PrijsCategorie_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="PrijsCategorie_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_AfstandsCategorie" refer="dbo_Dim_AfstandsCategorie_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="AfstandsCategorie_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_MixTijdstip" refer="dbo_Dim_MixTijdstip_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="MixTijdStip_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_Bekleding" refer="dbo_Dim_Bekleding_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="Bekleding_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_Uitvoering" refer="Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="Uitvoering_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_Taal" refer="dbo_Dim_Taal_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="Taal_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_Kleur" refer="dbo_Dim_Kleur_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="Kleur_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_OnderdeelsCategorie" refer="dbo_Dim_OnderdeelsCategorie_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="OnderdeelsCategorie_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_Onderdeel" refer="dbo_Dim_Onderdeel_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="Onderdeel_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_Maatsysteem" refer="dbo_Dim_Maatsysteem_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="MaatSysteem_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_Motor" refer="dbo_Dim_Motor_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="Motor_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_WagenType" refer="dbo_Dim_WagenType_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="WagenType_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_Locatie" refer="dbo_Dim_Locatie_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="Locatie_ID" />
+        </xs:keyref>
+        <xs:keyref name="FK_Fact_Samenstelling_Dim_MixDag" refer="dbo_Dim_MixDag_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_Samenstelling" />
+          <xs:field xpath="MixDag_ID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <Dashboards_x0020_Datawarehouse xmlns="" />
+  </Schema>
+</DataSourceView>
